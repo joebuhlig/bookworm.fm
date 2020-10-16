@@ -18,10 +18,14 @@ categories: []
 tags: []
 ---
 <p style="margin-top: 15px;"><a href="https://club.bookworm.fm/new-topic?category=recommendations"><button>Recommend A Book</button></a></p>
-<h4 style="margin-bottom: 35px;">Planned</h4>
-<p>[booklist-planned]</p>
+<h4 style="margin-bottom: 35px;">Upcoming</h4>
+{%- for upcoming in site.data.upcoming -%}
+  <p>{{ upcoming.title }} - <a href="{{ upcoming.amazon }}">Amazon</a></p>
+{%- endfor -%}
 <hr />
 <h4 style="margin-bottom: 35px;"><a href="https://club.bookworm.fm/c/recommendations/l/votes?status=open">Check out the list of recommendations!</a></h4>
 <hr />
 <h4 style="margin-bottom: 35px;">Completed</h4>
-<p>[booklist]</p>
+{%- for book in site.data.books -%}
+<p><a href="/{{ book.episode }}">{{ book.episode }}</a>: {{ book.title }} - <a href="{{ book.amazon }}">Amazon</a></p>
+{%- endfor -%}
