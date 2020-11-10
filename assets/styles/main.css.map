@@ -1,0 +1,12 @@
+{
+	"version": 3,
+	"file": "main.css",
+	"sources": [
+		"main.scss"
+	],
+	"sourcesContent": [
+		".navbar.is-primary .navbar-end > .navbar-item {\n  color: #ffffff;\n}\n.navbar-menu.is-active {\n  background-color: inherit;\n}\n"
+	],
+	"names": [],
+	"mappings": "AAAA,AAAA,OAAO,AAAA,WAAW,CAAC,WAAW,GAAG,YAAY,CAAC,EAC5C,KAAK,EAAE,OAAO,GACf;;AACD,AAAA,YAAY,AAAA,UAAU,CAAC,EACrB,gBAAgB,EAAE,OAAO,GAC1B"
+}
