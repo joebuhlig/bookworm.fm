@@ -1,25 +1,26 @@
-name: Scheduled-Build
+name: build-routine
 on:
   schedule:
     - cron: '*/5 * * * *'
 
 jobs:
-  runs-on: ubuntu-latest
+  build:
+    runs-on: ubuntu-latest
 
-  steps:
-    - uses: actions/checkout@v2
+    steps:
+      - uses: actions/checkout@v2
 
-    - name: Cache gems
-      uses: actions/cache@v1
-      with:
-        path: vendor/gems
-        key: ${{ runner.os }}-build-${{ hashFiles('**/Gemfile.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-build-
-          ${{ runner.os }}-
+      - name: Cache gems
+        uses: actions/cache@v1
+        with:
+          path: vendor/gems
+          key: ${{ runner.os }}-build-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
 
-    - name: Test
-      uses: DavidS/jekyll-deploy@
-      env:
-        JEKYLL_ENV: production
-        GH_PAGES_TOKEN: ${{ secrets.GH_PAGES_TOKEN }}
+      - name: Test
+        uses: DavidS/jekyll-deploy@
+        env:
+          JEKYLL_ENV: production
+          GH_PAGES_TOKEN: ${{ secrets.GH_PAGES_TOKEN }}
