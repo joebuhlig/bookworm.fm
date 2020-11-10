@@ -1,7 +1,7 @@
 name: Scheduled-Build
 on:
   schedule:
-    - cron: '* 25 * * *'
+    - cron: '*/5 * * * *'
 
 jobs:
   jekyll:
