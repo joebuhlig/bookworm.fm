@@ -4,14 +4,24 @@ on:
     - cron: '*/5 * * * *'
 
 jobs:
-  jekyll:
-    runs-on: ubuntu-18.04
-    steps:
-      - name: Build
-        uses: jerryjvl/jekyll-build-action@v1
+  runs-on: ubuntu-latest
 
-      - name: deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./_site
+  steps:
+    - uses: actions/checkout@v2
+
+    - name: Cache gems
+      uses: actions/cache@v1
+      with:
+        path: vendor/gems
+        key: ${{ runner.os }}-build-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-build-
+          ${{ runner.os }}-
+
+    - name: Test
+      uses: DavidS/jekyll-deploy@
+      with:
+        target-branch: gh-pages
+      env:
+        JEKYLL_ENV: production
+        GH_PAGES_TOKEN: ${{ secrets.GH_PAGES_TOKEN }}
