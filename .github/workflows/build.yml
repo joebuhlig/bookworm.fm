@@ -1,0 +1,13 @@
+name: Scheduled-Build
+on:
+  schedule:
+    - cron: '*/10 * * * *'
+
+jobs:
+  jekyll:
+    name: Build and deploy Jekyll site
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Build
+      uses: jerryjvl/jekyll-build-action@v1
