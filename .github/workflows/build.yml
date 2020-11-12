@@ -2,7 +2,7 @@ name: build-routine
 on:
   workflow_dispatch:
   schedule:
-    - cron: '1 6 * * *'
+    - cron: '1 12 * * *'
 
 jobs:
   build:
